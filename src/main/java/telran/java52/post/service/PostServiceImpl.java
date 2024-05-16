@@ -91,7 +91,7 @@ public class PostServiceImpl implements PostService {
 	public Iterable<PostDto> findPostsByPeriod(DatePeriodDto datePeriodDto) {
 		LocalDate from = datePeriodDto.getDateFrom();
 		LocalDate to = datePeriodDto.getDateTo();
-		return postRepository.findPostsBetweenDateCreated(from, to).map(p -> modelMapper.map(p, PostDto.class))
+		return postRepository.findByDateCreatedBetween(from, to).map(p -> modelMapper.map(p, PostDto.class))
 				.toList();
 	}
 
